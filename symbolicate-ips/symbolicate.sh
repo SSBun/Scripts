@@ -102,18 +102,15 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Restore positional arguments
-set -- "${POSITIONAL_ARGS[@]}"
-
 # Check argument count
-if [ "$#" -ne 2 ]; then
+if [ ${#POSITIONAL_ARGS[@]} -ne 2 ]; then
     print_error "Invalid number of arguments"
     show_help
     exit 1
 fi
 
-IPS_FILE="$1"
-DSYM_FILE="$2"
+IPS_FILE="${POSITIONAL_ARGS[0]}"
+DSYM_FILE="${POSITIONAL_ARGS[1]}"
 
 # ============================================
 # INPUT VALIDATION
